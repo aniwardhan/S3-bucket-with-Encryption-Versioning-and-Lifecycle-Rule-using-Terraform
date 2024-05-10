@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "allow_access_from_another_account" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = ["891377100641"]
+      identifiers = ["123456"] # add your AWS Account number
     }
 
     actions = [
