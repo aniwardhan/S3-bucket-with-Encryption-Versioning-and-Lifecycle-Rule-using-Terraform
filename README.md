@@ -155,7 +155,7 @@ Bucket Policy added
 
 ## Step 5: Upload single file into S3 bucket
 
-The below code uploads single file into the bucket. For example we have uploaded **index.html** file 
+The below code uploads single file into the bucket. For example we have uploaded **[index.htm](https://github.com/aniwardhan/Create-S3-bucket-with-Encryption-and-Versioning-enabled/blob/main/index.html)** file 
 
 ```hcl
 # Uploading index.html file to our bucket
