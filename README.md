@@ -14,7 +14,7 @@ The goal of this project is to create an Amazon S3 bucket with server-side encry
   
 * Ability to implement and test infrastructure changes using Terraform.
 
-## Step 1: Define provider.tf file
+## Step 1: Define [provider.tf](https://github.com/aniwardhan/Create-S3-bucket-with-Encryption-and-Versioning-enabled/blob/main/provider.tf) file
 
 ```hcl
 terraform {
@@ -32,7 +32,7 @@ provider "aws" {
 }
 ```
 
-## Step 2: Create S3 bucket
+## Step 2: [Create S3 bucket](https://github.com/aniwardhan/Create-S3-bucket-with-Encryption-and-Versioning-enabled/blob/main/main.tf)
 
 ```hcl
 # Create a S3 bucket 
@@ -45,7 +45,7 @@ Using the resource block, we've defined a new resource of type **aws_s3_bucket**
 
 Inside the aws_s3_bucket block, we've specified the name of our bucket using the bucket field. The name is reference from the variable file
 
-**variable.tf** 
+**[variable.tf](https://github.com/aniwardhan/Create-S3-bucket-with-Encryption-and-Versioning-enabled/blob/main/variable.tf)** 
 
 ```hcl
 # declare a variable to define the region name
@@ -122,7 +122,7 @@ Apply the changes to check the output in console
 
 ## Step 4: Create an S3 bucket policy that allows read-only access to a specific IAM user or role
 
-create a file **iampolicy.tf** and add the code below
+create a file **[iampolicy.tf](https://github.com/aniwardhan/Create-S3-bucket-with-Encryption-and-Versioning-enabled/blob/main/iampolicy.tf)** and add the code below
 
 ```hcl
 resource "aws_s3_bucket_policy" "allow_access_from_another_account" {
