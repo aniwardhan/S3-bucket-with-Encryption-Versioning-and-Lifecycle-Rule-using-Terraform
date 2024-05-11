@@ -247,6 +247,9 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
 * **Expiration Actions:** Expiration Actions characterize when objects should to be consequently deleted from the bucket. Items can be designed to lapse following a specific number of days since 
     creation or since the objects last modification.
 
+  ![image](https://github.com/aniwardhan/S3-bucket-with-Encryption-Versioning-and-Lifecycle-Rule/assets/80623694/d31be0eb-fc08-45f7-a15c-092da56950a9)
+
+
  ```hcl
   # Define lifecycle policy
   resource "aws_s3_bucket_lifecycle_configuration" "example_lifecycle" {
