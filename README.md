@@ -238,6 +238,45 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
 
 ![image](https://github.com/aniwardhan/Create-S3-bucket-with-Encryption-and-Versioning-enabled/assets/80623694/baa08d4f-d212-41e6-9e0a-c0cea0fdff39)
 
+## Step 9: Add Lifecycle Configuration
+
+* **Lifecycle Configuration:** Users can define or specify lifecycle rules for their own S3 buckets through lifecycle configuration settings. These principles indicate moves to be made on 
+    objects as they age.
+* **Transition Actions:** Transition Actions figure out what happens to objects as they arrive at determined stages in their lifecycle. For instance, items can be consequently changed to lower- 
+    cost capacity classes like S3 Standard-IA or Icy mass to diminish storage costs.
+* **Expiration Actions:** Expiration Actions characterize when objects should to be consequently deleted from the bucket. Items can be designed to lapse following a specific number of days since 
+    creation or since the objects last modification.
+
+ ```hcl
+  # Define lifecycle policy
+  resource "aws_s3_bucket_lifecycle_configuration" "example_lifecycle" {
+  bucket = aws_s3_bucket.my-bucket.id
+
+  rule {
+    id = "rule1"
+    filter {
+      prefix = "logs/" # You can set your prefix here
+    }
+
+    # Transition rule
+    transition {
+      days          = 30 # Update the transition days as per your requirement
+      storage_class = "GLACIER"
+    }
+
+    # Expiration rule
+    expiration {
+      days = 60 # Update the expiration days as per your requirement
+    }
+
+    # Status
+    status = "Enabled"
+  }
+}
+```
+
+![image](https://github.com/aniwardhan/S3-bucket-with-Encryption-Versioning-and-Lifecycle-Rule/assets/80623694/93658909-9921-44c7-b259-8dae8ea7aec1)
+
 ## Step 9: Clean the resources
 
 Apply ```terraform destroy -auto-approve``` to clean all the resources created
@@ -261,20 +300,3 @@ resource "aws_s3_bucket" "my-bucket" {
 ```
 
 ![image](https://github.com/aniwardhan/Create-S3-bucket-with-Encryption-and-Versioning-enabled/assets/80623694/613fef45-4fd3-4870-882c-1426fad246e5)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
