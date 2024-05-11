@@ -1,4 +1,4 @@
-# Create-S3-bucket-with-Encryption-and-Versioning-enabled
+# Create-S3-bucket-with-Encryption-Versioning-enabled-and-Lifecycle Configuration
 
 ## Objective:
 
