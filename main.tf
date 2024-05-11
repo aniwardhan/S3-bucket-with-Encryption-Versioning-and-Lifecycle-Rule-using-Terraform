@@ -67,7 +67,7 @@ resource "aws_kms_key" "mykey" {
   deletion_window_in_days = 10
 }
 
-
+# Define KMS Encryption for S3 bucket
 resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
   bucket = aws_s3_bucket.my-bucket.id
 
@@ -78,3 +78,30 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
     }
   }
 }
+
+# Define lifecycle policy
+resource "aws_s3_bucket_lifecycle_configuration" "example_lifecycle" {
+  bucket = aws_s3_bucket.my-bucket.id 
+
+  rule {
+    id     = "rule1"
+    filter {
+      prefix = "logs/"  # You can set your prefix here
+    }
+    
+    # Transition rule
+    transition {
+      days          = 30  # Update the transition days as per your requirement
+      storage_class = "GLACIER"
+    }
+
+    # Expiration rule
+    expiration {
+      days = 60  # Update the expiration days as per your requirement
+    }
+    
+    # Status
+    status = "Enabled"
+  }
+}
+
